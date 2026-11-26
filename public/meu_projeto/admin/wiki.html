@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Wiki – Silver Fox Admin</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <header id="adminHeader" class="admin-header site-header sticky-top"></header>
+
+    <main class="py-5" id="conteudo">
+
+        <div class="container">
+            <div id="adminBanner" class="mb-4"></div>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 border-bottom pb-3 mb-4">
+                <div>
+                    <span class="section-label">PAINEL DE CONTROLE</span>
+                    <h1 class="display-6 mt-1 mb-0 font-primary">Artigos da Wiki</h1>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="../pages/wiki.html" class="btn btn-sm btn-outline-secondary">🌐 Ver a Wiki</a>
+                    <a href="index.html" class="btn btn-sm btn-outline-secondary">← Dashboard</a>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="admin-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="h5 font-primary text-primary mb-0" id="wikiFormTitle">Novo artigo</h2>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" id="btnCancelWikiEdit" hidden>Cancelar edição</button>
+                        </div>
+                        <form id="formWiki" class="row g-3" novalidate>
+                            <div class="col-12">
+                                <label for="wkTitle" class="form-label small text-muted">Título *</label>
+                                <input type="text" id="wkTitle" class="form-control admin-input" required maxlength="120">
+                            </div>
+                            <div class="col-12">
+                                <label for="wkCategory" class="form-label small text-muted">Categoria *</label>
+                                <select id="wkCategory" class="form-select admin-input"></select>
+                            </div>
+                            <div class="col-7">
+                                <label for="wkTag" class="form-label small text-muted">Selo do cartão</label>
+                                <input type="text" id="wkTag" class="form-control admin-input" maxlength="40" placeholder="Ex.: Cosmologia">
+                            </div>
+                            <div class="col-5">
+                                <label for="wkTagColor" class="form-label small text-muted">Cor do selo</label>
+                                <select id="wkTagColor" class="form-select admin-input"></select>
+                            </div>
+                            <div class="col-12">
+                                <label for="wkSubtitle" class="form-label small text-muted">Subtítulo</label>
+                                <input type="text" id="wkSubtitle" class="form-control admin-input" maxlength="120" placeholder="Ex.: Região Central">
+                            </div>
+                            <div class="col-12">
+                                <label for="wkPeriod" class="form-label small text-muted">Período (para eras e eventos)</label>
+                                <input type="text" id="wkPeriod" class="form-control admin-input" maxlength="60" placeholder="Ex.: Ano 0 – 1200">
+                            </div>
+                            <div class="col-12">
+                                <label for="wkSummary" class="form-label small text-muted">Resumo (aparece no cartão) *</label>
+                                <textarea id="wkSummary" class="form-control admin-input" rows="3" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="wkContent" class="form-label small text-muted">Artigo completo</label>
+                                <textarea id="wkContent" class="form-control admin-input" rows="9" placeholder="Separe parágrafos com uma linha em branco. Deixe vazio se ainda não escreveu."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-custom w-100 py-2" id="btnSaveWiki">Salvar artigo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="admin-card p-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3 gap-2 flex-wrap">
+                            <h2 class="h5 font-primary text-primary mb-0">Artigos</h2>
+                            <span class="d-flex align-items-center gap-2">
+                                <select id="wikiFilterCat" class="form-select form-select-sm admin-input" style="width:auto;" aria-label="Filtrar por categoria"></select>
+                                <span id="wikiCountBadge" class="badge bg-secondary"></span>
+                            </span>
+                        </div>
+                        <div id="wikiManagementList" class="d-flex flex-column gap-2"></div>
+                    </div>
+
+                    <div class="admin-card p-4">
+                        <h2 class="h5 font-primary text-primary mb-3" id="wcFormTitle">Categorias da Wiki</h2>
+                        <form id="formWikiCat" class="row g-2 align-items-end mb-3" novalidate>
+                            <div class="col-3 col-md-2">
+                                <label for="wcIcon" class="form-label small text-muted">Ícone</label>
+                                <input type="text" id="wcIcon" class="form-control admin-input text-center" maxlength="4" placeholder="🌍">
+                            </div>
+                            <div class="col-9 col-md-6">
+                                <label for="wcName" class="form-label small text-muted">Nome *</label>
+                                <input type="text" id="wcName" class="form-control admin-input" required maxlength="60">
+                            </div>
+                            <div class="col-12 col-md-4 d-flex gap-2">
+                                <button type="submit" class="btn btn-primary-custom flex-grow-1" id="btnSaveWikiCat">Adicionar</button>
+                                <button type="button" class="btn btn-outline-secondary" id="btnCancelWikiCat" hidden>Cancelar</button>
+                            </div>
+                        </form>
+                        <div id="wikiCatList" class="d-flex flex-column gap-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../data/library.js"></script>
+    <script src="../../api/livros.js"></script>
+    <script src="../js/core/data.js"></script>
+    <script src="../js/modules/notifications.js"></script>
+    <script src="../js/admin/admin-core.js"></script>
+    <script src="../js/admin/wiki-admin.js"></script>
+</body>
+</html>

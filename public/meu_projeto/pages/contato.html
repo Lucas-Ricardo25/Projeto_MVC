@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fale com o autor: feedback, teorias e sugestões.">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#101013">
+    <title>Silver Fox - Contato & Feedback</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS personalizado -->
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header id="siteHeader" class="site-header sticky-top"></header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="py-5">
+
+        <!-- CABEÇALHO DA PÁGINA -->
+        <section class="container mb-5 text-center">
+            <span class="section-label">FALE COM O AUTOR</span>
+            <h1 class="display-4 mt-2 mb-3">Vamos Conversar?</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 600px;">
+                Tem teorias sobre os livros, dúvidas sobre o worldbuilding, sugestões ou encontrou algum erro? Envie uma mensagem.
+            </p>
+        </section>
+
+        <!-- CONTEÚDO DE CONTATO (FORMULÁRIO E INFORMAÇÕES) -->
+        <section class="container">
+            <div class="row g-5 justify-content-center">
+
+                <!-- Informações de Contato / Redes -->
+                <div class="col-lg-4">
+                    <div class="p-4 border rounded-3 bg-body-tertiary h-100 shadow-sm">
+                        <h3 class="mb-3 font-primary text-primary">Canais Oficiais</h3>
+                        <p class="text-muted small mb-4">
+                            Você também pode acompanhar atualizações e entrar em contato diretamente por meio dos canais abaixo:
+                        </p>
+
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="fs-4">📧</span>
+                                <div>
+                                    <small class="text-muted d-block">E-mail Direto</small>
+                                    <a href="mailto:contato@exemplo.com" class="text-light text-decoration-none">contato@exemplo.com</a>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="fs-4">💬</span>
+                                <div>
+                                    <small class="text-muted d-block">Discord / Comunidade</small>
+                                    <span class="text-light">Silver Fox Community</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="fs-4">📚</span>
+                                <div>
+                                    <small class="text-muted d-block">Repositório de Capítulos</small>
+                                    <span class="text-light">Atualizações Semanais</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="border-secondary opacity-25 my-4">
+
+                        <div class="p-3 bg-dark rounded border border-secondary border-opacity-25">
+                            <small class="text-primary fw-bold">💡 Dica:</small>
+                            <p class="mb-0 small text-muted">Feedback sobre enredos e teorias de leitores são sempre respondidos com prioridade!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário de Envio -->
+                <div class="col-lg-7">
+                    <div class="p-4 p-md-5 border rounded-3 bg-body-tertiary shadow-sm">
+                        <h3 class="mb-4 font-primary">Envie sua Mensagem</h3>
+
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label text-muted small">Seu Nome ou Apelido</label>
+                                <input type="text" id="nome" class="form-control bg-dark text-light border-secondary" placeholder="Ex: Viajante de Alandria" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label text-muted small">Seu E-mail</label>
+                                <input type="email" id="email" class="form-control bg-dark text-light border-secondary" placeholder="seuemail@exemplo.com" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="assunto" class="form-label text-muted small">Assunto</label>
+                                <select id="assunto" class="form-select bg-dark text-light border-secondary">
+                                    <option value="feedback">Feedback sobre os Livros</option>
+                                    <option value="teoria">Teoria / Worldbuilding</option>
+                                    <option value="duvida">Dúvida sobre a Wiki</option>
+                                    <option value="outro">Outro Assunto</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="mensagem" class="form-label text-muted small">Mensagem</label>
+                                <textarea id="mensagem" rows="5" class="form-control bg-dark text-light border-secondary" placeholder="Escreva sua mensagem, teoria ou sugestão aqui..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary-custom w-100 py-3">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+
+                        <!-- Mensagem de Sucesso (Oculta por padrão) -->
+                        <div id="successMessage" class="alert alert-success mt-4 d-none text-center" role="alert">
+                            ✉️ Seu aplicativo de e-mail foi aberto com a mensagem pronta – é só enviar. Obrigado pelo contato!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+<footer id="siteFooter" class="site-footer py-4 border-top mt-5"></footer>
+
+    <!-- Envio do formulário: abre o app de e-mail do visitante com a mensagem pronta -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("contactForm");
+            const successMessage = document.getElementById("successMessage");
+            if (!form) return;
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const cfg = window.Library ? window.Library.getConfig() : { email: "contato@exemplo.com" };
+                const nome = document.getElementById("nome").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const assuntoEl = document.getElementById("assunto");
+                const assunto = assuntoEl.options[assuntoEl.selectedIndex].text;
+                const mensagem = document.getElementById("mensagem").value.trim();
+
+                const corpo = `${mensagem}\n\n—\n${nome} <${email}>`;
+                location.href = "mailto:" + encodeURIComponent(cfg.email) +
+                    "?subject=" + encodeURIComponent("[Silver Fox] " + assunto) +
+                    "&body=" + encodeURIComponent(corpo);
+
+                form.reset();
+                if (successMessage) {
+                    successMessage.classList.remove("d-none");
+                    setTimeout(() => successMessage.classList.add("d-none"), 8000);
+                }
+            });
+
+            // Mostra o e-mail configurado no admin
+            if (window.Library) {
+                const email = window.Library.getConfig().email;
+                document.querySelectorAll('a[href^="mailto:"]').forEach((a) => {
+                    if (a.closest("form")) return;
+                    a.href = "mailto:" + email;
+                    if (a.textContent.includes("@")) a.textContent = email;
+                });
+            }
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dados + núcleo -->
+    <script src="../data/library.js"></script>
+    <script src="../../api/livros.js"></script>
+    <script src="../js/core/data.js"></script>
+    <script src="../js/core/layout.js"></script>
+    <script src="../js/core/storage.js"></script>
+    <script src="../js/core/navigation.js"></script>
+    <script src="../js/core/app.js"></script>
+
+    <!-- Módulos -->
+    <script src="../js/modules/theme.js"></script>
+    <script src="../js/modules/notifications.js"></script>
+    <script src="../js/modules/favorites.js"></script>
+    <script src="../js/modules/search.js"></script>
+    <script src="../js/script.js"></script>
+
+    <!-- Recursos do autor (manutenção / edição direta) -->
+    <script src="../js/global-admin.js"></script>
+
+</body>
+</html>

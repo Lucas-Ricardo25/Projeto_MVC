@@ -1,0 +1,54 @@
+/**
+ * variables.css
+ * Definições globais de variáveis CSS (Cores, Tipografia, Espaçamentos e Bootstrap Theme Overrides).
+ * Tema: Silver Fox Archives.
+ */
+
+:root {
+    /* ==========================================
+       1. PALETA DE CORES PRINCIPAL (SILVER FOX)
+       ========================================== */
+    --vmw-bg-dark: #101013;          /* Fundo principal profundo */
+    --vmw-bg-card: #151518;          /* Fundo de cards, painéis e elementos container */
+    --vmw-bg-tertiary: #1b1b1f;      /* Fundo de destaque secundário */
+    
+    --vmw-primary: #ab966f;          /* Dourado/Bronze Vintage (Acento principal) */
+    --vmw-primary-hover: #c4ae85;    /* Hover do acento principal */
+    --vmw-primary-alpha: rgba(171, 150, 111, 0.15); /* Acento transparente para brilhos */
+
+    --vmw-text-main: #e6e6e6;        /* Texto principal (Branco suave) */
+    --vmw-text-muted: #9999a1;       /* Texto secundário/esmaecido */
+    --vmw-border-color: rgba(255, 255, 255, 0.08); /* Bordas discretas */
+
+    /* ==========================================
+       2. TIPOGRAFIA
+       ========================================== */
+    --vmw-font-primary: 'Spectral', Georgia, serif;
+    --vmw-font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* ==========================================
+       3. SOBREPOSIÇÃO DE VARIÁVEIS DO BOOTSTRAP 5.3
+       ========================================== */
+    --bs-body-bg: var(--vmw-bg-dark);
+    --bs-body-color: var(--vmw-text-main);
+    --bs-body-font-family: var(--vmw-font-sans);
+    
+    --bs-primary: var(--vmw-primary);
+    --bs-primary-rgb: 171, 150, 111;
+    
+    --bs-dark: var(--vmw-bg-dark);
+    --bs-dark-rgb: 16, 16, 19;
+
+    --bs-tertiary-bg: var(--vmw-bg-card);
+    --bs-border-color: var(--vmw-border-color);
+
+    /* ==========================================
+       4. BORDAS & EFEITOS DE TRANSIÇÃO
+       ========================================== */
+    --vmw-radius-sm: 4px;
+    --vmw-radius-md: 8px;
+    --vmw-radius-lg: 12px;
+    
+    --vmw-transition: all 0.3s ease;
+    --vmw-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+}

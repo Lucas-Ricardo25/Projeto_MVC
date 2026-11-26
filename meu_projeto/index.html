@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Repositório literário e worldbuilding: livros, wiki, fichas de personagens e curiosidades dos reinos de Alandria e Asminster.">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#101013">
+    <title>Silver Fox Archives - Repositório Literário & Worldbuilding</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS personalizado (Modular) -->
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Estilos exclusivos para os efeitos de entrada suave -->
+    <style>
+        .hero-splash {
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #18181c 0%, #101013 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito sutil de iluminação de fundo */
+        .hero-splash::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(171, 150, 111, 0.08) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        /* Animação de entrada gradual (Fade In & Slide Up) */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ícone central com brilho suave */
+        .brand-avatar {
+            width: 88px;
+            height: 88px;
+            border: 2px solid rgba(171, 150, 111, 0.3);
+            background: rgba(21, 21, 24, 0.8);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .brand-avatar:hover {
+            transform: scale(1.05);
+            border-color: var(--vmw-primary, #ab966f);
+        }
+
+        /* Botões customizados para o Splash */
+        .btn-portal {
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-light">
+
+    <!-- SEÇÃO PRINCIPAL DE BOAS-VINDAS -->
+    <main class="hero-splash d-flex align-items-center justify-content-center py-5">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+
+                    <!-- Ícone / Logotipo -->
+                    <div class="mb-4 d-flex justify-content-center fade-in-element delay-1">
+                        <div class="brand-avatar rounded-circle d-flex align-items-center justify-content-center">
+                            <span class="fs-1" style="filter: grayscale(100%) brightness(110%);">🦊</span>
+                        </div>
+                    </div>
+
+                    <!-- Subtítulo de apresentação -->
+                    <div class="fade-in-element delay-2">
+                        <span class="section-label text-uppercase tracking-wider">Repositório Literário & Worldbuilding</span>
+                    </div>
+
+                    <!-- Título Principal -->
+                    <h1 class="display-3 font-primary fw-bold text-light mt-2 mb-4 fade-in-element delay-3">
+                        Silver Fox Archives
+                    </h1>
+
+                    <!-- Descrição de introdução -->
+                    <p class="lead text-muted mx-auto mb-5 px-md-3 fade-in-element delay-4" style="max-width: 620px; font-weight: 300; line-height: 1.7;">
+                        Um acervo dedicado a crônicas épicas, mitologias ancestrais, fichas de personagens e à exploração contínua dos reinos de Alandria e Asminster.
+                    </p>
+
+                    <!-- Botões de Ação Principais -->
+                    <div class="d-flex justify-content-center gap-3 flex-wrap fade-in-element delay-5">
+                        <!-- Botão 1: Portal Principal (Entra na lista de livros/páginas) -->
+                        <a href="pages/index.html" class="btn btn-primary-custom btn-portal rounded-2">
+                            Explorar o Site
+                        </a>
+
+                        <!-- Botão 2: Saiba Mais (Redireciona para o sobre.html em pages/) -->
+                        <a href="pages/sobre.html" class="btn btn-outline-secondary btn-portal rounded-2">
+                            Saiba Mais
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- RODAPÉ DISCRETO -->
+    <footer class="position-absolute bottom-0 w-100 py-3 text-center border-top border-secondary border-opacity-10 fade-in-element delay-5">
+        <div class="container">
+            <small class="text-muted" style="font-size: 0.8rem;">
+                © 2026 Silver Fox. Todos os direitos reservados.
+            </small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dados + núcleo -->
+    <script src="data/library.js"></script>
+    <script src="js/core/data.js"></script>
+    <script src="js/core/layout.js"></script>
+    <script src="js/core/storage.js"></script>
+    <script src="js/core/navigation.js"></script>
+    <script src="js/core/app.js"></script>
+
+    <!-- Módulos -->
+    <script src="js/modules/theme.js"></script>
+    <script src="js/modules/notifications.js"></script>
+    <script src="js/modules/favorites.js"></script>
+    <script src="js/modules/search.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Recursos do autor (manutenção / edição direta) -->
+    <script src="js/global-admin.js"></script>
+
+</body>
+</html>

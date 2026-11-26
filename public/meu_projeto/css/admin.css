@@ -1,0 +1,110 @@
+/**
+ * admin.css
+ * Estilos exclusivos para o Painel Administrativo do Silver Fox Archives.
+ */
+
+/* ==========================================
+   1. LAYOUT DO PAINEL ADMIN
+   ========================================== */
+body.admin-body {
+    background-color: var(--vmw-bg-dark, #101013);
+    color: var(--vmw-text-main, #e6e6e6);
+}
+
+.admin-header {
+    background-color: var(--vmw-bg-card, #151518);
+    border-bottom: 1px solid var(--vmw-border-color, rgba(255, 255, 255, 0.08));
+}
+
+/* ==========================================
+   2. CARDS E PAINÉIS DE ESTATÍSTICA (WIDGETS)
+   ========================================== */
+.admin-card {
+    background-color: var(--vmw-bg-card, #151518);
+    border: 1px solid var(--vmw-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: var(--vmw-radius-md, 8px);
+    transition: var(--vmw-transition, all 0.3s ease);
+}
+
+.admin-card:hover {
+    border-color: rgba(171, 150, 111, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================
+   3. FORMULÁRIOS E INPUTS DO ADMIN
+   ========================================== */
+.admin-input {
+    background-color: var(--vmw-bg-dark, #101013) !important;
+    border-color: var(--vmw-border-color, rgba(255, 255, 255, 0.08)) !important;
+    color: var(--vmw-text-main, #e6e6e6) !important;
+}
+
+.admin-input:focus {
+    border-color: var(--vmw-primary, #ab966f) !important;
+    box-shadow: 0 0 0 0.25rem var(--vmw-primary-alpha, rgba(171, 150, 111, 0.25)) !important;
+}
+
+/* ==========================================
+   4. TABELAS DE GERENCIAMENTO
+   ========================================== */
+.admin-table {
+    color: var(--vmw-text-main, #e6e6e6);
+    background-color: var(--vmw-bg-card, #151518);
+}
+
+.admin-table th,
+.admin-table td {
+    border-color: var(--vmw-border-color, rgba(255, 255, 255, 0.08)) !important;
+    vertical-align: middle;
+}
+
+.admin-table thead th {
+    background-color: var(--vmw-bg-tertiary, #1b1b1f);
+    color: var(--vmw-primary, #ab966f);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   5. COMPLEMENTOS DO PAINEL (v2)
+   ========================================== */
+.admin-body .admin-nav {
+    background-color: var(--vmw-bg-card, #151518);
+    border-bottom: 1px solid var(--vmw-border-color, rgba(255, 255, 255, 0.08));
+}
+
+.admin-body .nav-pills .nav-link.active {
+    background-color: var(--vmw-primary, #ab966f);
+    color: #101013 !important;
+}
+
+.admin-stat {
+    background-color: var(--vmw-bg-card, #151518);
+    border: 1px solid var(--vmw-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: var(--vmw-radius-md, 8px);
+}
+
+.admin-list-item {
+    background-color: var(--vmw-bg-dark, #101013);
+    border: 1px solid var(--vmw-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: var(--vmw-radius-md, 8px);
+}
+
+.admin-list-item.is-selected {
+    border-color: var(--vmw-primary, #ab966f);
+}
+
+.unpublished-banner {
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    color: #f5c46b;
+    border-radius: var(--vmw-radius-md, 8px);
+}
+
+.admin-input option {
+    background: #101013;
+    color: #e6e6e6;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalhes da obra, capítulos e downloads.">
+    <meta name="theme-color" content="#101013">
+    <title>Obra – Silver Fox Archives</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="../manifest.json">
+
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO (gerado por js/core/layout.js) -->
+    <header id="siteHeader" class="site-header sticky-top"></header>
+
+    <main class="py-5">
+        <div class="container" style="max-width: 960px;" id="bookView">
+            <p class="text-muted text-center py-5">Carregando obra…</p>
+        </div>
+    </main>
+
+    <!-- RODAPÉ (gerado por js/core/layout.js) -->
+    <footer id="siteFooter" class="site-footer py-4 border-top mt-5"></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dados + núcleo -->
+    <script src="../data/library.js"></script>
+    <script src="../js/core/data.js"></script>
+    <script src="../js/core/layout.js"></script>
+    <script src="../js/core/storage.js"></script>
+    <script src="../js/core/navigation.js"></script>
+    <script src="../js/core/app.js"></script>
+
+    <!-- Módulos -->
+    <script src="../js/modules/theme.js"></script>
+    <script src="../js/modules/notifications.js"></script>
+    <script src="../js/modules/favorites.js"></script>
+    <script src="../js/modules/search.js"></script>
+    <script src="../js/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const L = window.Library;
+            const view = document.getElementById("bookView");
+            const id = new URLSearchParams(location.search).get("id");
+            const book = id ? L.getBook(id) : null;
+
+            if (!book) {
+                document.title = "Obra não encontrada – " + L.getConfig().siteName;
+                view.innerHTML = `
+                    <div class="text-center py-5">
+                        <span class="section-label">OBRA NÃO ENCONTRADA</span>
+                        <h1 class="display-5 mt-2 mb-3">Essa obra se perdeu nas brumas</h1>
+                        <p class="text-muted mb-4">O endereço pode estar incorreto ou a obra foi removida.</p>
+                        <a href="livros.html" class="btn btn-primary-custom">Ver todas as obras</a>
+                    </div>`;
+                return;
+            }
+
+            const cfg = L.getConfig();
+            const st = L.statusInfo(book.status);
+            const cat = L.getCategory(book.category);
+            const chapters = (book.chapters || []).slice().sort((a, b) => a.number - b.number);
+            const hasProgress = book.progress && book.progress.total > 0;
+            const pct = hasProgress ? Math.min(100, Math.round(book.progress.current / book.progress.total * 100)) : 0;
+
+            // progresso de leitura deste leitor
+            let readState = {};
+            try { readState = JSON.parse(localStorage.getItem("sf_reading")) || {}; } catch (e) {}
+            const mine = readState[book.id] || { last: null, read: [] };
+            const firstReadable = chapters.find((c) => c.content);
+            const resume = chapters.find((c) => c.id === mine.last && c.content);
+
+            document.title = book.title + " – " + cfg.siteName;
+            const meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute("content", book.synopsis.slice(0, 155));
+
+            const cover = book.cover
+                ? `<img src="${L.esc(L.url(book.cover))}" alt="Capa de ${L.esc(book.title)}" class="book-cover-img" onerror="this.parentNode.classList.add('book-cover--empty');this.remove()">`
+                : "";
+
+            let actions = "";
+            if (resume) actions += `<a href="${L.esc(L.readUrl(book.id, resume.id))}" class="btn btn-primary-custom px-4 py-2">Continuar: Cap. ${resume.number}</a>`;
+            else if (firstReadable) actions += `<a href="${L.esc(L.readUrl(book.id, firstReadable.id))}" class="btn btn-primary-custom px-4 py-2">Começar a Ler</a>`;
+            if (book.pdf) actions += `<a href="${L.esc(L.url(book.pdf))}" class="btn ${actions ? "btn-outline-primary" : "btn-primary-custom"} px-4 py-2" download>⬇ Baixar PDF</a>`;
+            if (book.epub) actions += `<a href="${L.esc(L.url(book.epub))}" class="btn btn-outline-primary px-4 py-2" download>⬇ Baixar EPUB</a>`;
+            if (!actions) actions += `<button class="btn btn-outline-secondary px-4 py-2" disabled>Leitura em breve</button>`;
+            actions += `<button type="button" class="btn btn-outline-warning px-4 py-2" data-favorite-id="${L.esc(book.id)}">☆ Favoritar</button>`;
+
+            const chapterList = chapters.length ? chapters.map((c) => {
+                const read = mine.read.includes(c.id);
+                const inner = `
+                    <div>
+                        <span class="text-muted small d-block mb-1">Capítulo ${String(c.number).padStart(2, "0")}${c.date ? " · " + L.esc(L.formatDate(c.date)) : ""}</span>
+                        <h3 class="h6 font-primary mb-0">${L.esc(c.title)}</h3>
+                    </div>`;
+                if (c.content) return `<a href="${L.esc(L.readUrl(book.id, c.id))}" class="chapter-item text-decoration-none${read ? " is-read" : ""}">${inner}<span class="text-primary small">${read ? "✓ Lido" : "Ler →"}</span></a>`;
+                if (book.pdf) return `<a href="${L.esc(L.url(book.pdf))}" class="chapter-item text-decoration-none" download>${inner}<span class="text-primary small">PDF ↓</span></a>`;
+                return `<div class="chapter-item">${inner}<span class="text-muted small">Em breve</span></div>`;
+            }).join("") : `<p class="text-muted">Nenhum capítulo publicado ainda.</p>`;
+
+            view.innerHTML = `
+                <nav aria-label="Trilha" class="small mb-4"><a href="livros.html">← Todas as obras</a></nav>
+                <div class="row g-5 align-items-start mb-5">
+                    <div class="col-md-4">
+                        <div class="book-cover book-cover-lg ${book.cover ? "" : "book-cover--empty"}">${cover}<span class="book-cover-fallback" aria-hidden="true">📖</span></div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="d-flex align-items-center flex-wrap gap-2 mb-2">
+                            <span class="badge ${st.badge}">${L.esc(st.label)}</span>
+                            ${cat ? `<a href="livros.html?cat=${encodeURIComponent(cat.id)}" class="text-muted small text-decoration-none">• ${L.esc(cat.name)}</a>` : ""}
+                        </div>
+                        <h1 class="display-5 font-primary fw-bold mb-2">${L.esc(book.title)}</h1>
+                        ${book.subtitle ? `<p class="text-muted mb-3">${L.esc(book.subtitle)}</p>` : ""}
+                        <p class="text-muted small mb-4">
+                            Autor: <strong class="text-light">${L.esc(cfg.author)}</strong>
+                            ${book.publishedAt ? `&nbsp;|&nbsp; Publicação: <span class="text-light">${L.esc(book.publishedAt)}</span>` : ""}
+                            ${book.updatedAt ? `&nbsp;|&nbsp; Atualizado em: <span class="text-light">${L.esc(L.formatDate(book.updatedAt))}</span>` : ""}
+                        </p>
+                        <p class="lead text-muted mb-4" style="font-size:1.05rem;line-height:1.7;">${L.esc(book.synopsis)}</p>
+                        ${hasProgress ? `
+                        <div class="mb-4" style="max-width:420px;">
+                            <div class="d-flex justify-content-between small text-muted mb-1"><span>Progresso da obra</span><span>Cap. ${book.progress.current} de ${book.progress.total}</span></div>
+                            <div class="progress" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" style="height:6px;background:#1b1b1f;">
+                                <div class="progress-bar" style="width:${pct}%;background:var(--vmw-primary);"></div>
+                            </div>
+                        </div>` : ""}
+                        <div class="d-flex gap-3 flex-wrap">${actions}</div>
+                    </div>
+                </div>
+
+                <hr class="border-secondary border-opacity-10 my-5">
+
+                <section aria-labelledby="chaptersTitle">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 id="chaptersTitle" class="h4 font-primary text-primary mb-0">Capítulos Publicados</h2>
+                        <span class="badge bg-secondary">${chapters.length} ${chapters.length === 1 ? "capítulo" : "capítulos"}</span>
+                    </div>
+                    <div class="d-flex flex-column gap-2">${chapterList}</div>
+                </section>`;
+
+            if (window.FavoritesManager) window.FavoritesManager.refreshButtons();
+        });
+    </script>
+
+    <!-- Recursos do autor (manutenção / edição direta) -->
+    <script src="../js/global-admin.js"></script>
+
+</body>
+</html>

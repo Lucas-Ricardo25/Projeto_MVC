@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wiki do universo: geografia, eras, culturas e cosmologia dos mundos criados.">
+    <meta name="theme-color" content="#101013">
+    <title>Wiki dos Universos – Silver Fox Archives</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="../manifest.json">
+
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO (gerado por js/core/layout.js) -->
+    <header id="siteHeader" class="site-header sticky-top"></header>
+
+    <main class="py-5">
+
+        <section class="container mb-5 text-center">
+            <span class="section-label">ARQUIVOS DE WORLDBUILDING</span>
+            <h1 class="display-4 mt-2 mb-3">Wiki dos Universos</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 600px;">
+                Navegue pelas eras históricas, geografias místicas, sociedades e lore profunda dos mundos criados.
+            </p>
+        </section>
+
+        <section class="container">
+            <div class="row g-4">
+                <!-- BARRA LATERAL -->
+                <div class="col-lg-3">
+                    <div class="codex-side p-3 p-lg-4 sticky-lg-top" style="top: 100px;">
+                        <h2 class="h6 text-uppercase text-muted mb-3" style="letter-spacing:2px;">Categorias</h2>
+                        <label for="wikiSearch" class="visually-hidden">Buscar artigo</label>
+                        <input type="search" id="wikiSearch" class="form-control form-control-sm bg-dark text-light border-secondary mb-3" placeholder="Buscar artigo..." autocomplete="off">
+                        <div id="wikiTabs" class="codex-tabs" role="group" aria-label="Categorias da wiki"></div>
+                        <p id="wikiCount" class="small text-muted mt-3 mb-0" aria-live="polite"></p>
+                    </div>
+                </div>
+
+                <!-- ARTIGOS (renderizados por js/modules/codex.js) -->
+                <div class="col-lg-9">
+                    <div id="wikiGrid" data-dynamic></div>
+                    <div id="noWikiResults" class="text-center py-5 d-none">
+                        <h2 class="h4 text-muted">Nenhum artigo encontrado</h2>
+                        <p class="text-muted small">Tente pesquisar por outro termo ou escolher outra categoria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ (gerado por js/core/layout.js) -->
+    <footer id="siteFooter" class="site-footer"></footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dados + núcleo -->
+    <script src="../data/library.js"></script>
+    <script src="../js/core/data.js"></script>
+    <script src="../js/core/layout.js"></script>
+    <script src="../js/core/storage.js"></script>
+    <script src="../js/core/navigation.js"></script>
+    <script src="../js/core/app.js"></script>
+
+    <!-- Módulos -->
+    <script src="../js/modules/theme.js"></script>
+    <script src="../js/modules/notifications.js"></script>
+    <script src="../js/modules/favorites.js"></script>
+    <script src="../js/modules/search.js"></script>
+    <script src="../js/modules/codex.js"></script>
+    <script src="../js/script.js"></script>
+
+    <!-- Recursos do autor (manutenção / edição direta) -->
+    <script src="../js/global-admin.js"></script>
+
+</body>
+</html>

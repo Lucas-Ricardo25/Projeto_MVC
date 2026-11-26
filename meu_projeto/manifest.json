@@ -1,0 +1,14 @@
+{
+    "name": "Silver Fox Archives",
+    "short_name": "Silver Fox",
+    "description": "Repositório literário e worldbuilding: livros, wiki, fichas e curiosidades.",
+    "start_url": "index.html",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#101013",
+    "theme_color": "#101013",
+    "lang": "pt-BR",
+    "icons": [
+        { "src": "favicon.ico", "sizes": "any", "type": "image/x-icon" }
+    ]
+}

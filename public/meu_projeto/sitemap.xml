@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Troque SEU-DOMINIO.com pelo endereço real do site ao publicar -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://SEU-DOMINIO.com/index.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/index.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/livros.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/wiki.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/ficha.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/curiosidades.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/novidades.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/contato.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/autor.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/sobre.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/patrocinio.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/politica-privacidade.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/termos-uso.html</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/livro.html?id=livro01</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/livro.html?id=livro02</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/livro.html?id=livro03</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/livro.html?id=livro04</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/wiki-artigo.html?id=reinos-elementais</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/wiki-artigo.html?id=terras-altas-de-alandria</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/wiki-artigo.html?id=era-do-despertar-mitico</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/wiki-artigo.html?id=guerra-dos-tres-sois</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/wiki-artigo.html?id=kallythari-e-nytharis</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/wiki-artigo.html?id=lamina-de-asminster</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/ficha-detalhe.html?id=valir</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/ficha-detalhe.html?id=kallythari-nytharis</loc></url>
+    <url><loc>https://SEU-DOMINIO.com/pages/ficha-detalhe.html?id=lamina-de-asminster</loc></url>
+</urlset>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Livros & Capítulos – Silver Fox Admin</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <header id="adminHeader" class="admin-header site-header sticky-top"></header>
+
+    <main class="py-5" id="conteudo">
+
+        <div class="container">
+            <div id="adminBanner" class="mb-4"></div>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 border-bottom pb-3 mb-4">
+                <div>
+                    <span class="section-label">PAINEL DE CONTROLE</span>
+                    <h1 class="display-6 mt-1 mb-0 font-primary">Livros & Capítulos</h1>
+                </div>
+                <a href="index.html" class="btn btn-sm btn-outline-secondary">← Dashboard</a>
+            </div>
+
+            <div class="row g-4">
+                <!-- FORMULÁRIO DA OBRA -->
+                <div class="col-lg-5">
+                    <div class="admin-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="h5 font-primary text-primary mb-0" id="bookFormTitle">Cadastrar nova obra</h2>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" id="btnCancelBookEdit" hidden>Cancelar edição</button>
+                        </div>
+                        <form id="formBook" class="row g-3" novalidate>
+                            <div class="col-12">
+                                <label for="bkTitle" class="form-label small text-muted">Título *</label>
+                                <input type="text" id="bkTitle" class="form-control admin-input" required maxlength="120">
+                            </div>
+                            <div class="col-12">
+                                <label for="bkSubtitle" class="form-label small text-muted">Subtítulo / gênero</label>
+                                <input type="text" id="bkSubtitle" class="form-control admin-input" maxlength="120" placeholder="Ex.: Fantasia Épica / Aventura">
+                            </div>
+                            <div class="col-6">
+                                <label for="bkStatus" class="form-label small text-muted">Status</label>
+                                <select id="bkStatus" class="form-select admin-input"></select>
+                            </div>
+                            <div class="col-6">
+                                <label for="bkCategory" class="form-label small text-muted">Categoria</label>
+                                <select id="bkCategory" class="form-select admin-input"></select>
+                            </div>
+                            <div class="col-12">
+                                <label for="bkSynopsis" class="form-label small text-muted">Sinopse *</label>
+                                <textarea id="bkSynopsis" class="form-control admin-input" rows="4" required></textarea>
+                            </div>
+                            <div class="col-4">
+                                <label for="bkCur" class="form-label small text-muted">Cap. atual</label>
+                                <input type="number" id="bkCur" class="form-control admin-input" min="0" value="0">
+                            </div>
+                            <div class="col-4">
+                                <label for="bkTotal" class="form-label small text-muted">Total previsto</label>
+                                <input type="number" id="bkTotal" class="form-control admin-input" min="0" value="0">
+                            </div>
+                            <div class="col-4">
+                                <label for="bkPublished" class="form-label small text-muted">Ano</label>
+                                <input type="text" id="bkPublished" class="form-control admin-input" maxlength="10" placeholder="2026">
+                            </div>
+                            <div class="col-12">
+                                <label for="bkCover" class="form-label small text-muted">Capa (caminho)</label>
+                                <input type="text" id="bkCover" class="form-control admin-input" placeholder="livros/livro01/capa.webp">
+                            </div>
+                            <div class="col-6">
+                                <label for="bkPdf" class="form-label small text-muted">PDF (caminho)</label>
+                                <input type="text" id="bkPdf" class="form-control admin-input" placeholder="livros/livro01/livro.pdf">
+                            </div>
+                            <div class="col-6">
+                                <label for="bkEpub" class="form-label small text-muted">EPUB (caminho)</label>
+                                <input type="text" id="bkEpub" class="form-control admin-input" placeholder="livros/livro01/livro.epub">
+                            </div>
+                            <div class="col-12">
+                                <p class="small text-muted mb-0">Copie os arquivos para a pasta do site e informe o caminho a partir da raiz (ex.: <code>livros/livro01/livro.pdf</code>).</p>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-custom w-100 py-2" id="btnSaveBook">Salvar obra</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- LISTA DE OBRAS -->
+                <div class="col-lg-7">
+                    <div class="admin-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="h5 font-primary text-primary mb-0">Obras no acervo</h2>
+                            <span id="bookCountBadge" class="badge bg-secondary"></span>
+                        </div>
+                        <div id="booksManagementList" class="d-flex flex-column gap-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULOS DA OBRA SELECIONADA -->
+            <section id="chaptersPanel" class="admin-card p-4 mt-4" hidden>
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                    <h2 class="h5 font-primary text-primary mb-0">Capítulos de <span id="chaptersBookName"></span></h2>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="btnCloseChapters">Fechar</button>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-5">
+                        <form id="formChapter" class="row g-3" novalidate>
+                            <h3 class="h6 mb-0" id="chapterFormTitle">Novo capítulo</h3>
+                            <div class="col-4">
+                                <label for="chNumber" class="form-label small text-muted">Nº *</label>
+                                <input type="number" id="chNumber" class="form-control admin-input" min="1" required>
+                            </div>
+                            <div class="col-8">
+                                <label for="chDate" class="form-label small text-muted">Data</label>
+                                <input type="date" id="chDate" class="form-control admin-input">
+                            </div>
+                            <div class="col-12">
+                                <label for="chTitle" class="form-label small text-muted">Título *</label>
+                                <input type="text" id="chTitle" class="form-control admin-input" required maxlength="140">
+                            </div>
+                            <div class="col-12">
+                                <label for="chContent" class="form-label small text-muted">Texto do capítulo</label>
+                                <textarea id="chContent" class="form-control admin-input" rows="10" placeholder="Deixe em branco se o capítulo estiver só no PDF. Separe parágrafos com uma linha em branco."></textarea>
+                            </div>
+                            <div class="col-12 d-flex gap-2">
+                                <button type="submit" class="btn btn-primary-custom flex-grow-1" id="btnSaveChapter">Salvar capítulo</button>
+                                <button type="button" class="btn btn-outline-secondary" id="btnCancelChapterEdit" hidden>Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-7">
+                        <div id="chaptersList" class="d-flex flex-column gap-2"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../data/library.js"></script>
+    <script src="../../api/livros.js"></script>
+    <script src="../js/core/data.js"></script>
+    <script src="../js/modules/notifications.js"></script>
+    <script src="../js/admin/admin-core.js"></script>
+    <script src="../js/admin/livros-admin.js"></script>
+</body>
+</html>

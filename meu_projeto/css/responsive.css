@@ -1,0 +1,63 @@
+/**
+ * responsive.css
+ * Regras de mídia e ajustes responsivos para o projeto Silver Fox Archives.
+ */
+
+/* ==========================================
+   1. DISPOSITIVOS MÓVEIS PEQUENOS (Até 576px)
+   ========================================== */
+@media (max-width: 576px) {
+    .display-1 {
+        font-size: 3.5rem;
+    }
+
+    .display-3 {
+        font-size: 2.5rem;
+    }
+
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .hero-splash h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* ==========================================
+   2. TABLETS E TELAS MÉDIAS (De 577px a 991px)
+   ========================================== */
+@media (min-width: 577px) and (max-width: 991px) {
+    .navbar-collapse {
+        background-color: var(--bs-body-bg, #101013);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 1rem;
+    }
+}
+
+/* ==========================================
+   3. DESKTOP E TELAS GRANDES (A partir de 992px)
+   ========================================== */
+@media (min-width: 992px) {
+    /* Ajustes específicos para layouts amplos no desktop */
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* ==========================================
+   4. SUPORTE A TELAS DE ALTA DENSIDADE (Retina)
+   ========================================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Otimizações sutis de renderização se necessário */
+    body {
+        -webkit-font-smoothing: antialiased;
+    }
+}

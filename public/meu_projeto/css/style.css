@@ -1,0 +1,451 @@
+/* ========================================
+   CONFIGURAÇÕES GLOBAIS
+======================================== */
+
+:root {
+    --vmw-primary: #ab966f;
+    --vmw-primary-hover: #85714b;
+
+    --vmw-body: #b4b2b0;
+    --vmw-headings: #ffffff;
+    --vmw-links: var(--vmw-primary);
+
+    --vmw-font-primary: 'Spectral', Helvetica, Arial, sans-serif;
+    --vmw-font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    --pi-background: #f8f9fa;
+    --pi-secondary-background: #eaecf0;
+    --pi-border-color: #a2a9b1;
+    --pi-item-spacing: 5px 10px;
+    --pi-margin: 15px;
+    --pi-width: 270px;
+
+    --fexcolor-gray: #404040;
+    --fexcolor-dark-gray: #242424;
+    --fexcolor-light-gray: #9d9d9d;
+    --fexcolor-black: #0b0b0b;
+    --fexcolor-red: #e7363c;
+    --fexcolor-yellow: #e0c284;
+}
+
+/* ========================================
+   RESET GLOBAL
+======================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-size: 16px;
+}
+
+/* ========================================
+   CONFIGURAÇÃO DO BODY
+======================================== */
+
+/* ========================================
+   CORREÇÃO DE CORES E TEMA (BOOTSTRAP OVERRIDE)
+======================================== */
+
+/* Força fundo escuro e cores de texto globais */
+body, 
+[data-bs-theme="dark"] {
+    background-color: #101013 !important;
+    color: var(--vmw-body) !important;
+}
+
+/* 1. Correção do Cabeçalho (Header) */
+.site-header {
+    background-color: #101013 !important;
+    border-bottom: 1px solid rgba(171, 150, 111, 0.15) !important;
+}
+
+/* 2. Correção das Seções com Fundo Alternado */
+.bg-body-tertiary,
+.bg-body,
+.about-section,
+.contact-section,
+.books-section,
+.sheets-section {
+    background-color: #151518 !important;
+    color: var(--vmw-body) !important;
+}
+
+.wiki-section,
+.trivia-section {
+    background-color: #101013 !important;
+}
+
+/* 3. Correção dos Cards (Livros, Fichas, Curiosidades e Wiki) */
+.service-card,
+.card,
+.trivia-section .border,
+.wiki-section .border {
+    background-color: #19191d !important;
+    border: 1px solid rgba(171, 150, 111, .2) !important;
+    color: var(--vmw-body) !important;
+}
+
+/* 4. Correção da Cor dos Títulos e Textos Muted */
+h1, h2, h3, h4, h5, h6,
+.display-3, .display-5, .card-title {
+    color: var(--vmw-headings) !important;
+}
+
+.text-muted {
+    color: #9d9d9d !important;
+}
+
+/* 5. Ajuste dos Links nas Seções */
+a:not(.btn) {
+    color: var(--vmw-links);
+}
+
+a:not(.btn):hover {
+    color: var(--vmw-primary-hover);
+}
+
+/* ========================================
+   ROLAGEM E NAVEGAÇÃO
+======================================== */
+
+@media screen and (min-width: 851px) {
+    html,
+    body {
+        scroll-padding-top: 95.5px;
+    }
+}
+
+/* ========================================
+   BOOTSTRAP - CORES PERSONALIZADAS
+======================================== */
+
+:root,
+[data-bs-theme="light"] {
+    --bs-body-bg: #101013;
+    --bs-body-color: #b4b2b0;
+
+    --bs-primary: #ab966f;
+    --bs-primary-rgb: 171, 150, 111;
+
+    --bs-secondary: #6c757d;
+    --bs-dark: #101013;
+
+    --bs-link-color: #ab966f;
+    --bs-link-hover-color: #85714b;
+}
+
+
+/* ESTRUTURA */
+
+.site-header {
+    background: #101013;
+    border-bottom: 1px solid rgba(171, 150, 111, 0.15);
+}
+
+.logo {
+    font-family: var(--vmw-font-primary);
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--vmw-primary);
+    letter-spacing: 4px;
+}
+
+.nav-link {
+    color: var(--vmw-body) !important;
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: var(--vmw-primary) !important;
+}
+
+/* DESTAQUES */
+
+.highlight {
+    color: var(--vmw-primary);
+}
+
+.section-label {
+    color: var(--vmw-primary);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.hero-section {
+    min-height: 600px;
+}
+
+.hero-decoration {
+    min-height: 350px;
+    border: 1px solid rgba(171, 150, 111, .4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        145deg,
+        #19191d,
+        #101013
+    );
+}
+
+.hero-decoration span {
+    font-family: var(--vmw-font-primary);
+    font-size: 90px;
+    color: var(--vmw-primary);
+    letter-spacing: 12px;
+}
+
+.hero-decoration p {
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.decoration-line {
+    width: 80px;
+    height: 1px;
+    background: var(--vmw-primary);
+    margin: 15px 0;
+}
+
+/* BOTÕES */
+
+.btn-primary-custom {
+    display: inline-block;
+    padding: 13px 30px;
+    background: var(--vmw-primary);
+    color: #101013;
+    border: 1px solid var(--vmw-primary);
+    border-radius: 2px;
+    font-weight: 600;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.btn-primary-custom:hover {
+    background: transparent;
+    color: var(--vmw-primary);
+}
+
+/* SEÇÕES ESPECÍFICAS */
+
+.about-section,
+.contact-section {
+    background: #17171b;
+}
+
+.books-section,
+.sheets-section {
+    background: #151518 !important;
+}
+
+.wiki-section,
+.trivia-section {
+    background: #101013;
+}
+
+/* CARDS DE SERVIÇOS / LIVROS / WIKI / FICHAS */
+
+.service-card {
+    padding: 35px;
+    background: #19191d;
+    border: 1px solid rgba(171, 150, 111, .2);
+    transition: .3s;
+    border-radius: 4px;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--vmw-primary);
+}
+
+.service-icon {
+    color: var(--vmw-primary);
+    font-family: var(--vmw-font-primary);
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.service-card a {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* AJUSTES PARA CARDS NATIVOS DO BOOTSTRAP NO TEMA ESCURO */
+
+.card {
+    background-color: #19191d !important;
+    border: 1px solid rgba(171, 150, 111, .2) !important;
+    color: var(--vmw-body) !important;
+    transition: .3s;
+}
+
+.card:hover {
+    border-color: var(--vmw-primary) !important;
+    transform: translateY(-3px);
+}
+
+.card-title {
+    color: var(--vmw-headings) !important;
+    font-family: var(--vmw-font-primary);
+}
+
+/* ESTILIZAÇÃO DA WIKI E LISTAS */
+
+.wiki-section .border,
+.trivia-section .border {
+    background-color: #19191d;
+    border-color: rgba(171, 150, 111, .2) !important;
+}
+
+.wiki-section ul li {
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(171, 150, 111, 0.1);
+}
+
+.wiki-section ul li:last-child {
+    border-bottom: none;
+}
+
+.wiki-section ul li a {
+    color: var(--vmw-body);
+    transition: color .2s;
+}
+
+.wiki-section ul li a:hover {
+    color: var(--vmw-primary);
+    padding-left: 5px;
+}
+
+/* RODAPÉ */
+
+.site-footer {
+    background: #0b0b0d;
+    border-top: 1px solid rgba(171, 150, 111, .2);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-decoration {
+        min-height: 250px;
+        margin-top: 30px;
+    }
+
+    .hero-decoration span {
+        font-size: 65px;
+    }
+
+    .display-3 {
+        font-size: 2.7rem;
+    }
+
+}
+
+
+/* ========================================
+   ANIMAÇÕES JAVASCRIPT
+======================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CABEÇALHO AO ROLAR */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background .3s, box-shadow .3s;
+}
+
+.site-header.header-scrolled {
+    background: rgba(16, 16, 19, .96);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .3);
+}
+
+/* BOTÃO VOLTAR AO TOPO */
+
+#backToTop {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 45px;
+    height: 45px;
+
+    background: var(--vmw-primary);
+    color: #101013;
+
+    border: none;
+    border-radius: 2px;
+
+    font-size: 25px;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(15px);
+    transition: .3s;
+
+    z-index: 999;
+}
+
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:hover {
+    background: var(--vmw-primary-hover);
+    color: #fff;
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -1,0 +1,714 @@
+/**
+ * components.css
+ * Componentes modulares reutilizáveis do projeto Silver Fox Archives.
+ */
+
+/* ==========================================
+   1. BOTÕES PERSONALIZADOS
+   ========================================== */
+.btn-primary-custom {
+    background-color: var(--vmw-primary, #ab966f);
+    color: #101013;
+    border: 1px solid var(--vmw-primary, #ab966f);
+    font-weight: 600;
+    transition: var(--vmw-transition, all 0.3s ease);
+}
+
+.btn-primary-custom:hover,
+.btn-primary-custom:focus {
+    background-color: var(--vmw-primary-hover, #c4ae85);
+    color: #101013;
+    border-color: var(--vmw-primary-hover, #c4ae85);
+    box-shadow: 0 0 15px var(--vmw-primary-alpha, rgba(171, 150, 111, 0.25));
+}
+
+.btn-outline-primary {
+    color: var(--vmw-primary, #ab966f);
+    border-color: var(--vmw-primary, #ab966f);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--vmw-primary, #ab966f);
+    color: #101013;
+    border-color: var(--vmw-primary, #ab966f);
+}
+
+/* ==========================================
+   2. CARDS E CONTAINERS DE CONTEÚDO
+   ========================================== */
+.card-custom {
+    background-color: var(--vmw-bg-card, #151518);
+    border: 1px solid var(--vmw-border-color, rgba(255, 255, 255, 0.08));
+    border-radius: var(--vmw-radius-md, 8px);
+    transition: var(--vmw-transition, all 0.3s ease);
+}
+
+.card-custom:hover {
+    border-color: var(--vmw-primary, #ab966f);
+    transform: translateY(-4px);
+    box-shadow: var(--vmw-shadow-card, 0 4px 20px rgba(0, 0, 0, 0.35));
+}
+
+/* ==========================================
+   3. RÓTULOS E BADGES DE SEÇÃO
+   ========================================== */
+.section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vmw-primary, #ab966f);
+    margin-bottom: 0.5rem;
+}
+
+.badge-status {
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+    font-weight: 600;
+    border-radius: var(--vmw-radius-sm, 4px);
+}
+
+/* ==========================================
+   4. ELEMENTOS DE PERFIL E AVATAR
+   ========================================== */
+.avatar-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--vmw-bg-tertiary, #1b1b1f);
+    border: 2px solid var(--vmw-primary, #ab966f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================
+   5. BLOCOS DE CÓDIGO E NOTAS DA WIKI
+   ========================================== */
+.wiki-note {
+    background-color: var(--vmw-bg-card, #151518);
+    border-left: 4px solid var(--vmw-primary, #ab966f);
+    padding: 1.25rem;
+    border-radius: 0 var(--vmw-radius-sm, 4px) var(--vmw-radius-sm, 4px) 0;
+}
+
+/* ==========================================
+   6. ACESSIBILIDADE
+   ========================================== */
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: -60px;
+    z-index: 2000;
+    padding: 10px 16px;
+    background: var(--vmw-primary, #ab966f);
+    color: #101013 !important;
+    font-weight: 600;
+    border-radius: 0 0 var(--vmw-radius-sm, 4px) var(--vmw-radius-sm, 4px);
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--vmw-primary, #ab966f);
+    outline-offset: 2px;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--vmw-primary, #ab966f) !important;
+}
+
+/* ==========================================
+   7. CARTÕES DE LIVRO E CAPAS
+   ========================================== */
+.book-card {
+    overflow: hidden;
+}
+
+.book-cover {
+    position: relative;
+    display: block;
+    aspect-ratio: 3 / 2;
+    background: radial-gradient(circle, #1b1b1f 0%, #101013 100%);
+    border-bottom: 1px solid rgba(171, 150, 111, 0.2);
+    overflow: hidden;
+}
+
+.book-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.book-card:hover .book-cover-img {
+    transform: scale(1.04);
+}
+
+.book-cover-fallback {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    opacity: 0.6;
+}
+
+.book-cover--empty .book-cover-fallback {
+    display: flex;
+}
+
+.book-title-link {
+    color: var(--vmw-headings, #fff) !important;
+}
+
+.book-title-link:hover {
+    color: var(--vmw-primary, #ab966f) !important;
+}
+
+/* Capa grande na página do livro */
+.book-cover-lg {
+    aspect-ratio: 2 / 3;
+    max-width: 280px;
+    margin: 0 auto;
+    border: 1px solid rgba(171, 150, 111, 0.3);
+    border-radius: var(--vmw-radius-md, 8px);
+    box-shadow: var(--vmw-shadow-card, 0 4px 20px rgba(0, 0, 0, 0.35));
+}
+
+.book-cover-lg .book-cover-img {
+    border-radius: inherit;
+}
+
+/* ==========================================
+   8. BARRA DE FILTROS DO CATÁLOGO
+   ========================================== */
+.filter-bar .form-control,
+.filter-bar .form-select {
+    background-color: #151518;
+    border-color: rgba(171, 150, 111, 0.25);
+    color: var(--vmw-text-main, #e6e6e6);
+}
+
+.filter-bar .form-control:focus,
+.filter-bar .form-select:focus {
+    border-color: var(--vmw-primary, #ab966f);
+    box-shadow: 0 0 0 0.2rem var(--vmw-primary-alpha, rgba(171, 150, 111, 0.25));
+}
+
+.filter-bar .form-control::placeholder {
+    color: #77777f;
+}
+
+/* ==========================================
+   9. LISTA DE CAPÍTULOS E LEITOR
+   ========================================== */
+.chapter-item {
+    background: #151518;
+    border: 1px solid rgba(171, 150, 111, 0.2);
+    border-radius: var(--vmw-radius-md, 8px);
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--vmw-transition, all 0.3s ease);
+}
+
+a.chapter-item:hover {
+    border-color: var(--vmw-primary, #ab966f);
+    transform: translateX(4px);
+}
+
+.chapter-item.is-read {
+    opacity: 0.65;
+}
+
+.reader-toolbar {
+    background: #151518;
+    border: 1px solid rgba(171, 150, 111, 0.2);
+    border-radius: var(--vmw-radius-md, 8px);
+}
+
+#readerContent p {
+    margin-bottom: 1.4em;
+    color: #cfcdca;
+    text-indent: 1.5em;
+}
+
+#readerContent p:first-child {
+    text-indent: 0;
+}
+
+#readerContent p:first-child::first-letter {
+    font-size: 3.2em;
+    float: left;
+    line-height: 0.9;
+    padding-right: 0.12em;
+    color: var(--vmw-primary, #ab966f);
+    font-family: var(--vmw-font-primary, serif);
+}
+
+/* ==========================================
+   10. LINHA DO TEMPO (NOVIDADES)
+   ========================================== */
+.timeline {
+    position: relative;
+    padding-left: 1.75rem;
+    border-left: 1px solid rgba(171, 150, 111, 0.35);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.75rem;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.75rem - 5px);
+    top: 0.45rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--vmw-primary, #ab966f);
+    box-shadow: 0 0 0 4px rgba(171, 150, 111, 0.15);
+}
+
+/* ==========================================
+   11. FAVORITOS NO MENU
+   ========================================== */
+.fav-count {
+    font-size: 0.7rem;
+}
+
+@media print {
+    .site-header, .site-footer, #backToTop, .reader-toolbar, .skip-link, .author-bar {
+        display: none !important;
+    }
+    body, [data-bs-theme="dark"] {
+        background: #fff !important;
+        color: #000 !important;
+    }
+    #readerContent p {
+        color: #000 !important;
+    }
+}
+
+
+/* ==========================================
+   12. NAVBAR (v2): enxuta, com submenu e mobile melhorado
+   ========================================== */
+.site-header .navbar {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.site-header .logo {
+    font-size: 26px;
+    letter-spacing: 3px;
+    line-height: 1;
+}
+
+.navbar-toggler {
+    border-color: rgba(171, 150, 111, 0.35);
+    padding: 0.35rem 0.6rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem var(--vmw-primary-alpha, rgba(171, 150, 111, 0.25));
+}
+
+.navbar-toggler-icon {
+    filter: invert(0.75) sepia(0.4) saturate(1.6);
+}
+
+.site-header .nav-link {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+}
+
+@media (min-width: 992px) {
+    .site-header .nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0.15rem;
+        height: 2px;
+        background: var(--vmw-primary, #ab966f);
+        border-radius: 2px;
+    }
+
+    .site-header .dropdown-toggle.active::after {
+        /* o triângulo do dropdown usa ::after; o sublinhado fica no ::before */
+        position: static;
+        height: auto;
+        background: none;
+    }
+
+    .site-header .dropdown-toggle.active::before {
+        content: "";
+        position: absolute;
+        left: 0.75rem;
+        right: 1.5rem;
+        bottom: 0.15rem;
+        height: 2px;
+        background: var(--vmw-primary, #ab966f);
+        border-radius: 2px;
+    }
+}
+
+/* Botões redondos (favoritos / autor) */
+.nav-icon-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(171, 150, 111, 0.45);
+    border-radius: 50%;
+    color: var(--vmw-primary, #ab966f) !important;
+    font-size: 1.05rem;
+    transition: var(--vmw-transition, all 0.3s ease);
+}
+
+.nav-icon-btn:hover,
+.nav-icon-btn.active {
+    background: var(--vmw-primary, #ab966f);
+    color: #101013 !important;
+}
+
+.nav-icon-btn .fav-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--vmw-primary, #ab966f);
+    color: #101013;
+    font-size: 0.65rem;
+    border: 2px solid #101013;
+}
+
+.nav-icon-btn:hover .fav-count,
+.nav-icon-btn.active .fav-count {
+    background: #101013;
+    color: var(--vmw-primary, #ab966f);
+    border-color: var(--vmw-primary, #ab966f);
+}
+
+/* Submenu "Universo" */
+.site-dropdown {
+    background-color: #151518;
+    border: 1px solid rgba(171, 150, 111, 0.25);
+    border-radius: var(--vmw-radius-md, 8px);
+    padding: 0.4rem;
+    min-width: 270px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.site-dropdown .dropdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--vmw-radius-sm, 4px);
+    color: var(--vmw-body, #b4b2b0) !important;
+    white-space: normal;
+}
+
+.site-dropdown .dropdown-item:hover,
+.site-dropdown .dropdown-item:focus,
+.site-dropdown .dropdown-item.active {
+    background: rgba(171, 150, 111, 0.12);
+    color: #fff !important;
+}
+
+.site-dropdown .dropdown-item.active .dd-title {
+    color: var(--vmw-primary, #ab966f);
+}
+
+.site-dropdown .dd-icon {
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.site-dropdown .dd-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.site-dropdown .dd-desc {
+    display: block;
+    color: #8a8a92;
+    font-size: 0.78rem;
+}
+
+/* Menu recolhido (celular/tablet) */
+@media (max-width: 991.98px) {
+    .site-header .navbar-collapse {
+        margin-top: 0.6rem;
+        padding: 0.5rem;
+        background: #151518;
+        border: 1px solid rgba(171, 150, 111, 0.2);
+        border-radius: var(--vmw-radius-md, 8px);
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+    }
+
+    .site-header .navbar-nav .nav-link {
+        padding: 0.8rem 0.9rem;
+        border-radius: var(--vmw-radius-sm, 4px);
+        font-size: 1rem;
+    }
+
+    .site-header .navbar-nav .nav-link.active {
+        background: rgba(171, 150, 111, 0.12);
+    }
+
+    .site-header .navbar-nav > .nav-item + .nav-item {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .site-header .nav-extra {
+        border-top: 1px solid rgba(171, 150, 111, 0.2) !important;
+        margin-top: 0.25rem;
+    }
+
+    /* submenu aberto "por dentro" do menu, sem flutuar */
+    .site-dropdown {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none;
+        border: 0;
+        border-left: 2px solid rgba(171, 150, 111, 0.35);
+        border-radius: 0;
+        background: transparent;
+        margin: 0 0 0.25rem 0.9rem;
+        padding: 0 0 0 0.4rem;
+        min-width: 0;
+    }
+
+    .nav-icon-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .site-header .logo {
+        font-size: 21px;
+        letter-spacing: 2px;
+    }
+}
+
+/* ==========================================
+   13. RODAPÉ (v2): em colunas
+   ========================================== */
+.site-footer {
+    margin-top: 5rem;
+    padding: 0;
+    background: #0b0b0d;
+    border-top: 1px solid rgba(171, 150, 111, 0.25);
+}
+
+.footer-main {
+    padding-top: 3.25rem;
+    padding-bottom: 2.5rem;
+}
+
+.footer-logo {
+    font-size: 24px !important;
+    letter-spacing: 3px !important;
+    text-decoration: none;
+}
+
+.footer-title {
+    font-family: var(--vmw-font-sans, sans-serif);
+    font-size: 0.72rem !important;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vmw-primary, #ab966f) !important;
+    margin-bottom: 0.9rem;
+}
+
+.footer-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-legal a {
+    color: #9d9d9d !important;
+    font-size: 0.9rem;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-legal a {
+    font-size: inherit;
+}
+
+.footer-links a:hover,
+.footer-legal a:hover {
+    color: var(--vmw-primary, #ab966f) !important;
+}
+
+.footer-links--books a {
+    font-family: var(--vmw-font-primary, serif);
+    font-style: italic;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 1.1rem 0;
+}
+
+/* ==========================================
+   14. BARRA DO AUTOR (nas páginas públicas)
+   ========================================== */
+.author-bar {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 1060;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    max-width: calc(100vw - 32px);
+    padding: 0.4rem 0.5rem 0.4rem 0.9rem;
+    background: rgba(21, 21, 24, 0.96);
+    border: 1px solid var(--vmw-primary, #ab966f);
+    border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    font-size: 0.82rem;
+    color: #e6e6e6;
+}
+
+.author-bar .author-bar-label {
+    font-weight: 700;
+    color: var(--vmw-primary, #ab966f);
+    margin-right: 0.25rem;
+}
+
+.author-bar .btn {
+    border-radius: 999px;
+    font-size: 0.78rem;
+    padding: 0.25rem 0.7rem;
+}
+
+.author-bar .btn-edit-on {
+    background: var(--vmw-primary, #ab966f);
+    color: #101013 !important;
+    border-color: var(--vmw-primary, #ab966f);
+    font-weight: 700;
+}
+
+@media (max-width: 575.98px) {
+    .author-bar {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        max-width: none;
+        justify-content: center;
+        border-radius: 16px;
+        padding: 0.5rem;
+    }
+    .author-bar .author-bar-label { width: 100%; text-align: center; }
+    #backToTop { bottom: 90px; }
+}
+
+/* ==========================================
+   15. WIKI E FICHAS
+   ========================================== */
+.codex-side {
+    background: #151518;
+    border: 1px solid rgba(171, 150, 111, 0.2);
+    border-radius: var(--vmw-radius-md, 8px);
+}
+
+.codex-tab {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 100%;
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--vmw-radius-sm, 4px);
+    color: var(--vmw-body, #b4b2b0);
+    font-size: 0.92rem;
+    transition: var(--vmw-transition, all 0.3s ease);
+}
+
+.codex-tab:hover {
+    background: rgba(171, 150, 111, 0.1);
+    color: #fff;
+}
+
+.codex-tab.active {
+    background: var(--vmw-primary, #ab966f);
+    color: #101013;
+    font-weight: 600;
+}
+
+.codex-tab .count {
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+@media (max-width: 991.98px) {
+    .codex-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+    .codex-tab {
+        width: auto;
+        border: 1px solid rgba(171, 150, 111, 0.25);
+    }
+}
+
+.article-body p {
+    margin-bottom: 1.2em;
+    line-height: 1.85;
+    color: #cfcdca;
+    font-size: 1.05rem;
+}
+
+.attr-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+}
+
+.attr-list dt {
+    color: var(--vmw-primary, #ab966f);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.attr-list dd {
+    margin: 0;
+    color: #cfcdca;
+}
+
+.footer-main .col-lg-4 .footer-title {
+    margin-top: 1.75rem;
+}

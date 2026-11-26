@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Fichas – Silver Fox Admin</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <header id="adminHeader" class="admin-header site-header sticky-top"></header>
+
+    <main class="py-5" id="conteudo">
+
+        <div class="container">
+            <div id="adminBanner" class="mb-4"></div>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 border-bottom pb-3 mb-4">
+                <div>
+                    <span class="section-label">PAINEL DE CONTROLE</span>
+                    <h1 class="display-6 mt-1 mb-0 font-primary">Fichas: Personagens, Raças & Artefatos</h1>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="../pages/ficha.html" class="btn btn-sm btn-outline-secondary">🌐 Ver as Fichas</a>
+                    <a href="index.html" class="btn btn-sm btn-outline-secondary">← Dashboard</a>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="admin-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="h5 font-primary text-primary mb-0" id="sheetFormTitle">Nova ficha</h2>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" id="btnCancelSheetEdit" hidden>Cancelar edição</button>
+                        </div>
+                        <form id="formSheet" class="row g-3" novalidate>
+                            <div class="col-12">
+                                <label for="shName" class="form-label small text-muted">Nome *</label>
+                                <input type="text" id="shName" class="form-control admin-input" required maxlength="120">
+                            </div>
+                            <div class="col-12">
+                                <label for="shType" class="form-label small text-muted">Tipo *</label>
+                                <select id="shType" class="form-select admin-input"></select>
+                            </div>
+                            <div class="col-7">
+                                <label for="shTag" class="form-label small text-muted">Selo do cartão</label>
+                                <input type="text" id="shTag" class="form-control admin-input" maxlength="40" placeholder="Ex.: Protagonista">
+                            </div>
+                            <div class="col-5">
+                                <label for="shTagColor" class="form-label small text-muted">Cor do selo</label>
+                                <select id="shTagColor" class="form-select admin-input"></select>
+                            </div>
+                            <div class="col-12">
+                                <label for="shMeta" class="form-label small text-muted">Destaque no canto do cartão</label>
+                                <input type="text" id="shMeta" class="form-control admin-input" maxlength="60" placeholder="Ex.: Nível: Mítico">
+                            </div>
+                            <div class="col-12">
+                                <label for="shSubtitle" class="form-label small text-muted">Subtítulo</label>
+                                <input type="text" id="shSubtitle" class="form-control admin-input" maxlength="120" placeholder="Ex.: Raça: Humano / Fragmento Divino">
+                            </div>
+                            <div class="col-12">
+                                <label for="shSummary" class="form-label small text-muted">Resumo (aparece no cartão) *</label>
+                                <textarea id="shSummary" class="form-control admin-input" rows="3" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="shAttrs" class="form-label small text-muted">Atributos (um por linha, no formato <code>Nome: valor</code>)</label>
+                                <textarea id="shAttrs" class="form-control admin-input font-monospace" rows="4" placeholder="Habilidade Principal: Domínio Elemental&#10;Origem: Midgard"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="shContent" class="form-label small text-muted">Ficha completa (texto)</label>
+                                <textarea id="shContent" class="form-control admin-input" rows="7" placeholder="Separe parágrafos com uma linha em branco."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="shImage" class="form-label small text-muted">Imagem (caminho, opcional)</label>
+                                <input type="text" id="shImage" class="form-control admin-input" placeholder="assets/images/authors/valir.webp">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-custom w-100 py-2" id="btnSaveSheet">Salvar ficha</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="admin-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3 gap-2 flex-wrap">
+                            <h2 class="h5 font-primary text-primary mb-0">Fichas cadastradas</h2>
+                            <span class="d-flex align-items-center gap-2">
+                                <select id="sheetFilterType" class="form-select form-select-sm admin-input" style="width:auto;" aria-label="Filtrar por tipo"></select>
+                                <span id="sheetCountBadge" class="badge bg-secondary"></span>
+                            </span>
+                        </div>
+                        <div id="sheetManagementList" class="d-flex flex-column gap-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../data/library.js"></script>
+    <script src="../../api/livros.js"></script>
+    <script src="../js/core/data.js"></script>
+    <script src="../js/modules/notifications.js"></script>
+    <script src="../js/admin/admin-core.js"></script>
+    <script src="../js/admin/fichas-admin.js"></script>
+</body>
+</html>
